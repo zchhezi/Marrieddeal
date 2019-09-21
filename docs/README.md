@@ -49,7 +49,6 @@ volume|int|数量
 ycode|string|你的本地编号
 entrustno|string|委托编号
 transactionno|string|成交编号
-errStr|string|错误信息
 
 ### 输出参数
 
@@ -57,7 +56,7 @@ errStr|string|错误信息
 :---|:-|:-
 account|string|资金账号
 ycode|string|你的本地编号
-errStr|string|错误信息
+errStr|string|错误信息 成功时为委托编号 
 
 #### TransactionOrder
 ```  js
