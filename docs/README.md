@@ -33,8 +33,8 @@ Cmd|Data|描述|返回数据
 1  |[account,code,type,price,volume,ycode]|委买|[account,ycode, errStr]
 2  |[account,code,type,price,volume,ycode]|委卖|[ account, ycode, errStr]
 3  |[account,entrustNo,ycode]|撤委托|[ account, ycode, errStr]
-4  |[code,entrustno]`被动响应`|实时成交单|[TransactionOrder](/?id=TransactionOrder)
-5  |[code,transactionno]`被动响应`|实时委托单|[EntrOrder](/?id=EntrOrder)
+4  |[code,transactionno]`被动响应`|实时成交单|[TransactionOrder](/?id=TransactionOrder)
+5  |[code,entrustno]`被动响应`|实时委托单|[EntrOrder](/?id=EntrOrder)
 
 
 ### 请求参数
