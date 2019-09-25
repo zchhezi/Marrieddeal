@@ -123,7 +123,8 @@ Cmd|Data|描述|返回数据
 6  |`被动响应`|行情推送|[SecurityQuotes](/?id=SecurityQuotes)
 7  |`被动响应`|k线推送|[Kline](/?id=Kline)
 8  |`被动响应`|成交推送|[TransactionData](/?id=TransactionData)
-9  |`被动响应`|分时推送|[KlineMK](/?id=Kline)
+9  |?user=test&pwd=test123789&mode=Binary&zilb=no&encryption=no|登录 `登录消息不需要压缩加密`|
+10 |
 
 #### 请求参数
 
@@ -132,6 +133,11 @@ Cmd|Data|描述|返回数据
 ActionType|int|订阅操作类型 `覆盖 0` ` 增加 1`  ` 减少 2` ` 取消 3`
 code|string|产品代码
 KlineType|int| k线类型: `1分钟 0` `5分钟 1` `15分钟 2` `30分钟 3` `60分钟 4 ` `日 5` `周 6` `月 7` `分时 8` `120分钟 9` `季 10` `年 11`
+user|string| 登录名
+pwd|string| 登录密码
+zlib|string| 数据压缩: `压缩 yes` `不压缩 no`
+encryption|string| 数据加密,目前只支持AES加密算法,: `加密 yes` `不加密 no`
+mode|string|数据收发模式: `Binary 二进制` `Text 文本 `
 
 #### 输出参数
 ##### SecurityQuotes
