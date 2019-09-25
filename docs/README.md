@@ -123,8 +123,8 @@ Cmd|Data|描述|返回数据
 6  |`被动响应`|行情推送|[SecurityQuotes](/?id=SecurityQuotes)
 7  |`被动响应`|k线推送|[Kline](/?id=Kline)
 8  |`被动响应`|成交推送|[TransactionData](/?id=TransactionData)
-9  |?user=test&pwd=test123789&mode=Binary&zilb=no&encryption=no|登录 `登录消息不需要压缩加密`|
-10 |
+9  |`被动响应`|分时推送|[KlineMk](/?id=Kline)
+10 |?user=test&pwd=test123789<br>&mode=Binary&zilb=no&encryption=no|登录 `登录消息不需要压缩加密`|
 
 #### 请求参数
 
