@@ -3,6 +3,10 @@
 --- -->
 
 # 版本
+> V1.3 `2019-09-26`
++ 修改交易委托单信息
++ 新增委托单通知命令
+
 > V1.2 `2019-09-25`
 + 新增行情接口 socket
 
@@ -38,6 +42,7 @@ Cmd|Data|描述|返回数据
 3  |[account,entrustNo,ycode]|撤委托|[ account, ycode, errStr]
 4  |[code,transactionno]`被动响应`|实时成交单|[TransactionOrder](/?id=TransactionOrder)
 5  |[code,entrustno]`被动响应`|实时委托单|[EntrOrder](/?id=EntrOrder)
+5  |`被动响应`|委托单状态通知|[entrustno,entrusstatus]
 
 
 ### 请求参数
@@ -52,6 +57,7 @@ volume|int|数量
 ycode|string|你的本地编号
 entrustno|string|委托编号
 transactionno|string|成交编号
+entrusstatus|int|委托完结状态 `委托中 0` `已成交 1` `废单 2` `已撤 3` `撤单失败 4` 
 
 ### 输出参数
 
@@ -87,15 +93,21 @@ TransactionOrder
 ``` js
 EntrOrder
 {
-    orderid (integer):  委托编号,
-    fundaccount (string):  资金账号,
+    Id (integer):  委托编号,
+    FundAccount (string):  资金账号,
     SecurityCode (string):  产品代码,
-    price (float):  委托价格,
-    volume (integer):  委托量,
-    flag (integer): 委托方向 1 买 2 卖 5 撤,
-    type (integer): 委托类别 1 市价 2 限价,
-    category (integer): 报单方式 0 当日限价 1 即成剩撤 2 全成全撤,
-    timestamp (integer): 时间戳
+    SecurityName (string):  产品名称,
+    SecurityType (int): 产品类型
+    EntrustPrice (float):  委托价格,
+    EntrustCount (integer):  委托量,
+    TransactionPrice (float):  成交价格,
+    TransactionCount (integer):  成交数量,
+    Amount (float):  成交金额,
+    Status (int):  状态,
+    BuySellMark (integer): 委托方向 1 买 2 卖 5 撤,
+    PriceType (integer): 委托类别 1 市价 2 限价,
+    Category (integer): 报单方式 0 当日限价 1 即成剩撤 2 全成全撤,
+    CreateDate (integer): 日期
 }
 
 ```
@@ -116,8 +128,8 @@ EntrOrder
 ### 请求/响应命令
 Cmd|Data|描述|返回数据
 :---|:--- |:--- |:--
-0  |[]|心跳包|{"code":1,"data":"ok","islast":true}
-1  |[ActionType,[Code]]|订阅行情 频率:40秒至60秒一次|
+0  |[]|心跳包 频率:40秒至60秒一次|{"code":1,"data":"ok","islast":true}
+1  |[ActionType,[Code]]|订阅行情 |
 2  |[ActionType,["Code_KlineType"]]|订阅K线|{"code":1,"data":"订阅k线成功","islast":true}
 3  |Code|订阅实时成交|{"code":1,"data":"订阅实时成交成功","islast":true}
 6  |`被动响应`|行情推送|[SecurityQuotes](/?id=SecurityQuotes)
