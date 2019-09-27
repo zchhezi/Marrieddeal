@@ -3,6 +3,9 @@
 --- -->
 
 # 版本
+> V1.4 `2019-09-27`
++ 修改实时成交单为批量发送
+
 > V1.3 `2019-09-26`
 + 修改交易委托单信息
 + 新增委托单通知命令
@@ -42,7 +45,7 @@ Cmd|Data|描述|返回数据
 3  |[account,entrustNo,ycode]|撤委托|[ account, ycode, errStr]
 4  |[code,transactionno]`被动响应`|实时成交单|[TransactionOrder](/?id=TransactionOrder)
 5  |[code,entrustno]`被动响应`|实时委托单|[EntrOrder](/?id=EntrOrder)
-5  |`被动响应`|委托单状态通知|[entrustno,entrusstatus]
+6  |`被动响应`|委托单状态通知|[entrustno,entrusstatus]
 
 
 ### 请求参数
@@ -69,9 +72,8 @@ errStr|string|错误信息 成功时为委托编号
 
 #### TransactionOrder
 ```  js
-TransactionOrder
-{
-    Id (integer):  资金账号,
+[
+    Id (integer):  id,
     FundAccount (string):  资金账号,
     SecurityCode (string):  产品代码,
     SecurityName (string):  产品名称,
@@ -86,7 +88,7 @@ TransactionOrder
     CreateDate (string):  创建日期,
     Date (string):  日期 [yyyyMMdd],
     Time (string):  时间 [HHmmss]
-}
+]
 ```
 
 #### EntrOrder
